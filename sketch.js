@@ -3,7 +3,7 @@ let backgroundImg;
 let catcherImg;
 
 function preload() {
-  backgroundImg = loadImage("background.jpg"); // background image
+  backgroundImg = loadImage("background.JPG"); // background image
   catcherImg = loadImage("catcher.png"); // catcher image
 }
 
