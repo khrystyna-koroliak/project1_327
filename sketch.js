@@ -30,9 +30,12 @@ function draw() {
     // button
     rect(550, 400, 200, 80);
     textSize(25);
+    stroke(0);
     text("PLAY", width / 2, 450);
   } else if (gameState === "play") {
     background(backgroundImg);
+
+
     
     // catcher // its png idk why its an image 
     image(catcherImg, mouseX - 25, mouseY - 25, 50, 50); // adjust the position to center the image on the cursor
