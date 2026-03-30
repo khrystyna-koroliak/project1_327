@@ -15,8 +15,8 @@ let beeSound;
 // functions
 
 function preload() {
-  backgroundImg = loadImage("background.JPG"); // background image
-  beeSound = loadSound("bee.mp3"); // bee sound effect
+  backgroundImg = loadImage("background.jpg"); // background image
+  catcherImg = loadImage("catcher.png"); // catcher image
 }
 
 
@@ -43,12 +43,12 @@ function draw() {
     // button
     rect(550, 400, 200, 80);  //box mentioned down there
     textSize(25);
-    text("PLAY", width / 2, 450); 
-    
-// click -> next screen
-
+    text("PLAY", width / 2, 450);
   } else if (gameState === "play") {
-    background(backgroundImg); //preloaded 
+    background(backgroundImg);
+    
+    // catcher // its png idk why its an image 
+    image(catcherImg, mouseX - 25, mouseY - 25, 50, 50); // adjust the position to center the image on the cursor
 
     textSize(30);
     textAlign(LEFT);
@@ -96,43 +96,6 @@ function mousePressed() {
   if (gameState === "start") {
     if (mouseX > 550 && mouseX < 750 && mouseY > 400 && mouseY < 480) {
       gameState = "play";
-      timeLeft = 60;
-      counter = 0;
-      score = 0;
-      moveBee(); // move the bee to a random position when the game starts
-
-      if (!beeSound.isPlaying()) {
-        beeSound.loop();
-      }
-    }
-  }
-
-  if (gameState === "play") {
-    if (dist(mouseX, mouseY, beeX, beeY) < 30) { // 30 because area near bee
-      score = score + 1;
-      moveBee();
-    }
-  }
-
-  if (gameState === "end") {
-    if (mouseX > 550 && mouseX < 750 && mouseY > 400 && mouseY < 480) { //inside play button
-      gameState = "start"; 
     }
   }
 }
-
-// DA BEE 
-function gameScreen () {
-  textSize(30);
-  textAlign(CENTER);
-  text("🐝", beeX, beeY);
-}
-
-
-// DA BEE ON THE MOVE
-function moveBee() {
-  beeX = random(50, width - 50);
-  beeY = random(120, height - 50);
-}
-
-// THE END 
